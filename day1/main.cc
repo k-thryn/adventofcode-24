@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void calculate_distances(vector<string> list1, vector<string> list2) 
+void calculate_distances(vector<int> list1, vector<int> list2) 
 {
 // TODO: implement. 
 }
@@ -16,8 +16,8 @@ int main()
 {
 // Read input file.
 ifstream input ("input.txt"); 
-vector<string> list1;
-vector<string> list2;
+vector<int> list1;
+vector<int> list2;
 string line;
 
 if (input.is_open()) 
@@ -25,18 +25,21 @@ if (input.is_open())
     while (input) 
     {
         getline(input, line);
+        if (line.empty())
+        {
+            break;
+        }
         // Split into items from list 1 and list 2.
         stringstream ss(line);
         string loc;
         // Read item from list 1.
         ss >> loc;
-        list1.push_back(loc);
+        list1.push_back(stoi(loc));
         // Read item from list 2.
         ss >> loc;
-        list2.push_back(loc);
+        list2.push_back(stoi(loc));
     }
 }
-
 input.close();
 
 calculate_distances(list1, list2);
