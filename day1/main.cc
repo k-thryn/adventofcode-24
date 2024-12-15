@@ -9,7 +9,17 @@ using namespace std;
 
 void calculate_distances(vector<int> list1, vector<int> list2) 
 {
-// TODO: implement. 
+    // Sort each list of locations in ascending order. 
+    sort(list1.begin(), list1.end());
+    sort(list2.begin(), list2.end());
+
+    int total_distance = 0;
+    for (int i = 0; i < list1.size(); i++)
+    {
+        // Get pair; calculate diff
+        total_distance += abs(list1[i] - list2[i]);
+    }
+    cout << "Solution: " << total_distance << "\n";
 }
 
 int main() 
