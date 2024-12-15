@@ -7,4 +7,4 @@ all:
 	./$(TARGET)
 
 clean:
-	rm main 
+	rm $(TARGET)
