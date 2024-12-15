@@ -9,10 +9,6 @@ using namespace std;
 
 void calculate_distances(vector<int> list1, vector<int> list2) 
 {
-    // Sort each list of locations in ascending order. 
-    sort(list1.begin(), list1.end());
-    sort(list2.begin(), list2.end());
-
     int total_distance = 0;
     for (int i = 0; i < list1.size(); i++)
     {
@@ -20,6 +16,35 @@ void calculate_distances(vector<int> list1, vector<int> list2)
         total_distance += abs(list1[i] - list2[i]);
     }
     cout << "Solution: " << total_distance << "\n";
+}
+
+void calculate_similarity_score(vector<int> list1, vector<int> list2)
+{
+    int similarity_score = 0;
+
+    // index for iterating through list2. 
+    int j = 0;
+    for (int i = 0; i < list1.size(); i++) 
+    {
+        if (list1[i] < list2[j])
+        {
+            continue;
+        }
+        while (list1[i] > list2[j])
+        {
+            // Increment j until we find it. 
+            j++;
+        }
+        // Count how many times the element in list1 appears in list2. 
+        int num_appearances = 0;
+        while (list1[i] == list2[j])
+        {
+            num_appearances++;
+            j++;
+        }
+        similarity_score += (num_appearances * list1[i]);
+    }
+    cout << "Solution: " << similarity_score << "\n";
 }
 
 int main() 
@@ -52,7 +77,12 @@ if (input.is_open())
 }
 input.close();
 
+// Sort each list of locations in ascending order. 
+sort(list1.begin(), list1.end());
+sort(list2.begin(), list2.end());
+
 calculate_distances(list1, list2);
+calculate_similarity_score(list1, list2);
 
 return 0;
 }
