@@ -80,16 +80,6 @@ int main()
             report.push_back(entry);
         }
     }
-
-    for (vector<int> line : report)
-    {
-        for (int value : line)
-        {
-            cout << value << " ";
-        }
-        cout << "\n";
-    }
-    
     calculate_num_safe(report);
     return 0;
 }
