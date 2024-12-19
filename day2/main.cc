@@ -14,8 +14,8 @@ void calculate_num_safe(vector< vector<int> > report)
     {
         // Determine safety of entry.
         vector<int> entry = report[i];
-        int prev;
-        bool is_ascending;
+        int prev = 0;
+        bool is_ascending = false;
         bool is_safe = true;
         for (int j = 0; j < entry.size(); j++)
         {
@@ -38,7 +38,6 @@ void calculate_num_safe(vector< vector<int> > report)
                     prev = entry[j];
                 } else {
                     is_safe = false;
-                    break;
                 }
             } else {
                 // Check both direction and interval. 
@@ -48,7 +47,6 @@ void calculate_num_safe(vector< vector<int> > report)
                     prev = entry[j];
                 } else {
                     is_safe = false;
-                    break;
                 }
             }
         }
@@ -69,9 +67,8 @@ int main()
 
     if (input.is_open())
     {
-        while (input)
+        while (getline(input, line))
         {
-            getline(input, line);
             // Split into items;
             stringstream ss(line);
             vector<int> entry;
@@ -94,12 +91,5 @@ int main()
     }
     
     calculate_num_safe(report);
-
-    // test data
-
-    vector<int> row3 = {2, 5, 7, 9, 10, 12 };
-    vector< vector<int> > testdata = { row3 };
-
-    calculate_num_safe(testdata);
     return 0;
 }
