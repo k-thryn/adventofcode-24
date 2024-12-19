@@ -1,9 +1,9 @@
 TARGET = main 
 
 $(TARGET): 
-	g++ main.cc -o $(TARGET) 
+	g++ -std=c++11 main.cc -o $(TARGET) 
 
-all: 
+all: $(TARGET)
 	./$(TARGET)
 
 clean:
